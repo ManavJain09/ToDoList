@@ -15,7 +15,6 @@ This is a simple ToDoList app built using Flutter. The app allows users to creat
 
 - Flutter
 - Dart
-- sqflite
 - provider
 - flutter_local_notifications
 - timezone
