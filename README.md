@@ -1,16 +1,40 @@
-# todo_list
+# ToDoList App
 
-A new Flutter project.
+This is a simple ToDoList app built using Flutter. The app allows users to create, edit, and delete tasks, set reminders and due dates, prioritize tasks, and sort tasks based on priority and due date.
 
-## Getting Started
+## Features
 
-This project is a starting point for a Flutter application.
+- Create, edit, and delete tasks
+- Each task has a title, description, priority level, and due date
+- Set reminders for tasks
+- Push notifications for upcoming tasks
+- Sort tasks based on priority, due date
+- Save user data locally
 
-A few resources to get you started if this is your first Flutter project:
+## Requirements
 
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
+- Flutter
+- Dart
+- sqflite
+- provider
+- flutter_local_notifications
+- timezone
 
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+## Installation
+
+1. Clone the repository
+2. Run `flutter pub get` to install dependencies
+3. Run the app using `flutter run`
+
+## Usage
+
+- Tap the "+" button to add a new task
+- Tap on a task to view details, edit, or delete it
+
+## Video Demonstration
+
+https://drive.google.com/file/d/1iBscuD1p3FAzQG1kHAQBMiRVWgXwrBM1/view?usp=sharing
+
+## License
+
+This project is licensed under the MIT License - see the LICENSE file for details.
