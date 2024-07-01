@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:todo_list/taskSearchPage.dart';
+import 'package:todo_list/screens/taskSearchPage.dart';
 
 import 'add_edit_note_screen.dart';
-import 'bloc_note.dart';
-import 'note_view_model.dart';
+import 'package:todo_list/blocs/bloc_note.dart';
+import 'package:todo_list/models/note_view_model.dart';
 
 class TaskScreen extends StatelessWidget {
   @override

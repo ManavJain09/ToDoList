@@ -3,7 +3,7 @@
 import 'package:shared_preferences/shared_preferences.dart';
 import 'dart:convert';
 
-import 'note_view_model.dart';
+import 'package:todo_list/models/note_view_model.dart';
 
 
 

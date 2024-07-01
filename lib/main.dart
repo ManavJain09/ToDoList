@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:todo_list/repository_note.dart';
+import 'package:todo_list/controller/repository_note.dart';
 import 'package:flutter_local_notifications/flutter_local_notifications.dart';
 import 'package:timezone/data/latest_all.dart' as tz;
 
-import 'bloc_note.dart';
-import 'note_main_screen.dart';
+import 'package:todo_list/blocs/bloc_note.dart';
+import 'package:todo_list/screens/note_main_screen.dart';
 
 final FlutterLocalNotificationsPlugin flutterLocalNotificationsPlugin =
     FlutterLocalNotificationsPlugin();
@@ -15,24 +15,6 @@ void main() async {
   final taskRepository = TaskRepository();
 
   tz.initializeTimeZones();
-
-  const AndroidInitializationSettings initializationSettingsAndroid =
-      AndroidInitializationSettings('@mipmap/ic_launcher');
-
-  final InitializationSettings initializationSettings = InitializationSettings(
-    android: initializationSettingsAndroid,
-  );
-
-  await flutterLocalNotificationsPlugin.initialize(
-    initializationSettings,
-    onDidReceiveNotificationResponse: (NotificationResponse notificationResponse) async {
-      if (notificationResponse.payload != null) {
-        debugPrint('notification payload: ${notificationResponse.payload}');
-        // Handle notification tap here
-      }
-    },
-  );
-
   runApp(MyApp(taskRepository: taskRepository));
 }
 

@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
-import 'add_edit_note_screen.dart';
-import 'note_view_model.dart';
+import 'package:todo_list/screens/add_edit_note_screen.dart';
+import 'package:todo_list/models/note_view_model.dart';
 
 
 class TaskSearchDelegate extends SearchDelegate<String> {

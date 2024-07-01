@@ -2,8 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:intl/intl.dart';
 
-import 'bloc_note.dart';
-import 'note_view_model.dart';
+import 'package:todo_list/blocs/bloc_note.dart';
+import 'package:todo_list/models/note_view_model.dart';
 
 
 class AddEditTaskScreen extends StatefulWidget {
