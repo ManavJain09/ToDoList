@@ -1,10 +1,11 @@
+// lib/screens/add_edit_task_screen.dart
+
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:intl/intl.dart';
-
-import 'package:todo_list/blocs/bloc_note.dart';
+import 'package:todo_list/blocs/task_bloc.dart';
 import 'package:todo_list/models/note_view_model.dart';
-
+import 'package:todo_list/services/notification_service.dart';
+import 'package:intl/intl.dart';
 
 class AddEditTaskScreen extends StatefulWidget {
   final Task? task;
@@ -204,40 +205,38 @@ class _AddEditTaskScreenState extends State<AddEditTaskScreen> {
             SizedBox(height: 16.0),
             ElevatedButton(
               onPressed: () {
-                final title = _titleController.text.trim();
-                final description = _descriptionController.text.trim();
+                final task = Task(
+                  id: widget.task?.id ?? DateTime.now().millisecondsSinceEpoch.toString(),
+                  title: _titleController.text,
+                  description: _descriptionController.text,
+                  dueDate: _dueDate,
+                  priority: _priority,
+                  hasReminder: _hasReminder,
+                  reminderDate: _reminderDate,
+                );
 
-                if (title.isNotEmpty) {
-                  final task = Task(
-                    id: widget.task?.id ?? DateTime.now().toString(),
-                    title: title,
-                    description: description,
-                    dueDate: _dueDate,
-                    priority: _priority,
-                    isCompleted: widget.task?.isCompleted ?? false,
-                    hasReminder: _hasReminder,
-                    reminderDate: _hasReminder ? _reminderDate : null,
-                  );
-
-                  BlocProvider.of<TaskBloc>(context).add(
-                    widget.task == null ? AddTask(task) : UpdateTask(task),
-                  );
-
-                  Navigator.of(context).pop();
+                if (widget.task == null) {
+                  BlocProvider.of<TaskBloc>(context).add(AddTask(task));
+                } else {
+                  BlocProvider.of<TaskBloc>(context).add(UpdateTask(task));
                 }
+
+                if (_hasReminder && _reminderDate != null) {
+                  NotificationService().scheduleNotification(
+                    task.id as int,
+                    task.title,
+                    task.description,
+                    _reminderDate!,
+                  );
+                }
+
+                Navigator.of(context).pop();
               },
-              child: Text(widget.task == null ? 'Add Task' : 'Save Changes'),
+              child: Text(widget.task == null ? 'Add Task' : 'Update Task'),
             ),
           ],
         ),
       ),
     );
-  }
-
-  @override
-  void dispose() {
-    _titleController.dispose();
-    _descriptionController.dispose();
-    super.dispose();
   }
 }

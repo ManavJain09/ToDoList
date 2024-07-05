@@ -3,7 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:todo_list/screens/taskSearchPage.dart';
 
 import 'add_edit_note_screen.dart';
-import 'package:todo_list/blocs/bloc_note.dart';
+import 'package:todo_list/blocs/task_bloc.dart';
 import 'package:todo_list/models/note_view_model.dart';
 
 class TaskScreen extends StatelessWidget {
@@ -116,7 +116,7 @@ class TaskScreen extends StatelessWidget {
       case 3:
         return 'Low Priority';
       default:
-        return 'Unknown Priority';
+        return 'No Priority';
     }
   }
 
